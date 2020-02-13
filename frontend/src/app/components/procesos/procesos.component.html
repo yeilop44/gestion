@@ -1,6 +1,7 @@
 <button type="button" class="btn btn-primary" style="margin-bottom: 15px;" (click)="openModalProceso()">
   <i class="fas fa-plus"></i> Nuevo
 </button>
+<app-loading *ngIf="isLoading"></app-loading>
 <div  style="margin-right: 10px;">
   <table class="table" >    
     <tbody class="border">

@@ -14,7 +14,7 @@ import * as moment1  from 'moment-business-days';
 })
 export class ProcesosComponent implements OnInit {
   processes: any[] = [];
-  missingDays: any[] = [9, 2, 1] ;
+  isLoading: boolean = false;
 
   bsModalRef: BsModalRef;
 
@@ -26,9 +26,11 @@ export class ProcesosComponent implements OnInit {
   }
 
   getProcess(){
+    this.isLoading = true;
     this.processService.getProcess()
       .subscribe((data: any) => {
-        this.processes = data.items;        
+        this.processes = data.items; 
+        this.isLoading = false;       
         this.calculateDiffDates();           
       });      
   }

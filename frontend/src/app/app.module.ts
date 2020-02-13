@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { TitleComponent } from './components/shared/title/title.component';
 import { IndicadoresComponent } from './components/indicadores/indicadores.component';
 import { ModalNuevoProcesoComponent } from './components/shared/modals/modal-nuevo-proceso/modal-nuevo-proceso.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
 
 
 
@@ -26,7 +27,8 @@ import { ModalNuevoProcesoComponent } from './components/shared/modals/modal-nue
     NavbarComponent,
     TitleComponent,
     IndicadoresComponent,
-    ModalNuevoProcesoComponent
+    ModalNuevoProcesoComponent,
+    LoadingComponent
     
   ],
   imports: [
