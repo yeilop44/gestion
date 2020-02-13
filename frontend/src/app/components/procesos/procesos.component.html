@@ -1,0 +1,32 @@
+<button type="button" class="btn btn-primary" style="margin-bottom: 15px;" (click)="openModalProceso()">
+  <i class="fas fa-plus"></i> Nuevo
+</button>
+<div  style="margin-right: 10px;">
+  <table class="table" >    
+    <tbody class="border">
+      <tr *ngFor="let process of processes; let i = index">
+        <th scope="row">{{ process.nameProcess }}</th>
+        <td>{{ process.namePetitioner }}</td>     
+        <td>{{ process.dateCreate | date:'mediumDate'}}</td>
+        <td>{{ process.dateResponse | date:'mediumDate'}}</td>
+        <td width="15%" style="text-align: center;">
+          <div *ngIf="process.status.length !== 3" style="margin-top: 8px;">
+            <ngb-progressbar  type="primary" height="14px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays > 2" >{{ process.missingDays }}/{{ process.totalDays }}</ngb-progressbar>
+            <ngb-progressbar  type="danger" height="14px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays <= 2" >{{ process.missingDays }}/{{ process.totalDays }}</ngb-progressbar>                        
+          </div>                     
+        </td>
+        <td>
+          <div *ngIf="process.status[0].nameStatus !== ''">
+            <span  class="badge badge-pill" 
+              style=" height: 22px; font-weight: 500;"
+              *ngFor="let state of process.status | slice: process.status.length-1" [ngClass]="{'green': state.nameStatus == 'finalizado', 
+              'red': state.nameStatus == 'iniciado',   'yellow': state.nameStatus == 'en proceso'}">
+              <i class="fas fa-circle fa-xs" style="font-size: 6px; padding-left: 50px; padding: 4px 0px 0px 3px; float: left;"></i>
+              <span style="padding-left: 6px; padding-right: 7px;">{{ state.nameStatus }} </span>
+            </span>
+          </div>          
+        </td>
+      </tr>     
+    </tbody>
+  </table>
+</div>

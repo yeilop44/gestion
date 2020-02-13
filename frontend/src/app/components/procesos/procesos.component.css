@@ -1,0 +1,30 @@
+tbody.border tr:hover  {      
+    box-shadow: 0 2px 0px rgb(192, 192, 192), 0 4px 4px 0 rgba(221, 221, 221, 0.329);
+    border-left: 1px solid rgb(192, 192, 192);    
+    border-right: 1px solid rgb(192, 192, 192);  
+}   
+
+.red {
+    background-color: rgb(255, 227, 227);
+    color: rgb(224, 49, 49);
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.green {
+    background-color: rgb(211, 249, 216);
+    color: rgb(47, 158, 68);
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+.yellow {
+    background-color: rgb(255, 243, 219);
+    color: rgb(240, 140, 0);
+    text-transform: capitalize;
+    font-size: 14px;
+}
+
+
+
+

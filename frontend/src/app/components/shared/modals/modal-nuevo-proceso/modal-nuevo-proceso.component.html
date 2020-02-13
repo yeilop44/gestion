@@ -1,0 +1,78 @@
+
+  <div class="modal-header">
+    <h6 class="modal-title pull-left">Nuevo proceso</h6>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-5">          
+          <input type="text" class="form-control" placeholder="Nombre proceso"  name="nameProcess" [(ngModel)]="proceso.nameProcess">
+        </div>
+        <div class="form-group col-md-5">          
+          <input type="text" class="form-control" placeholder="Nombre peticionario" name="namePetitioner" [(ngModel)]="proceso.namePetitioner">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-5">          
+          <input type="text" class="form-control" placeholder="identificación del peticionario"  name="identification" [(ngModel)]="proceso.identification">
+        </div>
+        <div class="form-group col-md-5">          
+          <input type="text" class="form-control" placeholder="No. de contacto" name="phone" [(ngModel)]="proceso.phone">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-10">          
+          <input type="hidden" class="form-control" placeholder="dateCreate"  name="dateCreate" [(ngModel)]="proceso.dateCreate">
+        </div>    
+      </div>
+      <div class="form-row" > 
+        <div class="form-group col-md-10">                                        
+         
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="dd/mm/yyyy" name="d2" #c2="ngModel" [(ngModel)]="proceso.dateResponse" ngbDatepicker #d2="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+    
+        </div>    
+      </div>
+      <label for="exampleInputEmail1">Estados</label>
+      <div class="form-row" *ngFor="let item of status; let i = index">                                   
+        <input type="hidden" class="form-control"   name="dateCreate" [(ngModel)]="item.dateCreate">               
+        <div class="form-group col-md-10 ">
+          <select class="form-control" name="nameStatus" [(ngModel)]="item.nameStatus">
+            <option selected>iniciado</option>        
+            <option>en proceso</option>
+            <option>finalizado</option>
+          </select>                       
+        </div> 
+        <div class="form-group col-md-2 divbutton">
+          <button  class="btn btn-primary buttonHiddenShow" style="border-radius: 50%; margin-right: 10px;" (click)="addField(item)" *ngIf="(i==status.length-1 && status.length<=2 )">
+            <i class="fas fa-plus"></i>
+          </button>                            
+          <button  class="btn btn-primary buttonHiddenShow" style="border-radius: 50%;" (click)="deleteField(i)" *ngIf="(status.length)>1">
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>                                                                                                                                                                                                                                                                                                                                          
+      </div>                   
+      <button type="submit" class="btn btn-primary" (click)="save(proceso)">Guardar</button>
+    </form>
+  </div>
+
+
+
+
+
+
+
+
+  
+  
+ 

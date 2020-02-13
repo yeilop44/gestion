@@ -1,0 +1,9 @@
+.buttonHiddenShow {
+    display: none;
+    
+}
+
+.divbutton:hover .buttonHiddenShow {
+    display: inline;    
+}
+
