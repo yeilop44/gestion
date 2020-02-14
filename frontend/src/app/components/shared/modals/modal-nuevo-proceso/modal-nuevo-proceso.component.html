@@ -30,18 +30,30 @@
         </div>    
       </div>
       <div class="form-row" > 
-        <div class="form-group col-md-10">                                        
-         
-            <div class="form-group">
-              <div class="input-group">
-                <input class="form-control" placeholder="dd/mm/yyyy" name="d2" #c2="ngModel" [(ngModel)]="proceso.dateResponse" ngbDatepicker #d2="ngbDatepicker">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
-                </div>
+        <div class="form-group col-md-5">                                                 
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="dd/mm/aaaa" name="d3" #c3="ngModel" [(ngModel)]="proceso.dateReceived" ngbDatepicker #d3="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button">
+                  <i class="far fa-calendar-alt"></i>
+                </button>
               </div>
             </div>
-    
-        </div>    
+          </div>    
+        </div> 
+        <div class="form-group col-md-5">                                                 
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="dd/mm/aaaa" name="d2" #c2="ngModel" [(ngModel)]="proceso.dateResponse" ngbDatepicker #d2="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button">
+                    <i class="far fa-calendar-alt"></i>
+                  </button>
+                </div>
+              </div>
+            </div>    
+        </div>              
       </div>
       <label for="exampleInputEmail1">Estados</label>
       <div class="form-row" *ngFor="let item of status; let i = index">                                   

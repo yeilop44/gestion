@@ -6,14 +6,17 @@
   <table class="table" >    
     <tbody class="border">
       <tr *ngFor="let process of processes; let i = index">
-        <th scope="row">{{ process.nameProcess }}</th>
+        <td style="font-weight: 600;">{{ process.nameProcess }}</td>
         <td>{{ process.namePetitioner }}</td>     
-        <td>{{ process.dateCreate | date:'mediumDate'}}</td>
+        <td>{{ process.dateReceived | date:'mediumDate'}}</td>
         <td>{{ process.dateResponse | date:'mediumDate'}}</td>
         <td width="15%" style="text-align: center;">
-          <div *ngIf="process.status.length !== 3" style="margin-top: 8px;">
-            <ngb-progressbar  type="primary" height="14px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays > 2" >{{ process.missingDays }}/{{ process.totalDays }}</ngb-progressbar>
-            <ngb-progressbar  type="danger" height="14px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays <= 2" >{{ process.missingDays }}/{{ process.totalDays }}</ngb-progressbar>                        
+          <div *ngIf="process.status.length !== 3" style="margin-top: -10px;">
+              <span class="missingDays">
+                {{ process.missingDays }}/{{ process.totalDays }}
+              </span>
+              <ngb-progressbar  type="primary" height="6px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays > 2"></ngb-progressbar>
+              <ngb-progressbar  type="danger" height="6px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays <= 2"></ngb-progressbar>                                 
           </div>                     
         </td>
         <td>

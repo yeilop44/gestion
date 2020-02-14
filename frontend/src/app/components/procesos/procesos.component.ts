@@ -46,7 +46,7 @@ export class ProcesosComponent implements OnInit {
 
   calculateDiffDates(){
     for(let i=0; i<this.processes.length; i++){
-      let a = moment(this.processes[i].dateCreate);
+      let a = moment(this.processes[i].dateReceived);
       let b =  moment(this.processes[i].dateResponse);
       let c = moment(new Date());
       //let totalDays = b.diff(a, 'days');
@@ -54,14 +54,9 @@ export class ProcesosComponent implements OnInit {
       let totalDays = moment1(b, 'DD-MM-YYYY').businessDiff(moment(a,'DD-MM-YYYY'));
       let missingDays = moment1(b, 'DD-MM-YYYY').businessDiff(moment((new Date()),'DD-MM-YYYY'));
       this.processes[i].totalDays = totalDays;
-      this.processes[i].missingDays = missingDays;
-      console.log(this.processes);
-
-    }      
+      this.processes[i].missingDays = missingDays;      
+    }
+    console.log(this.processes);      
   }
-
-
-
-
 
 }

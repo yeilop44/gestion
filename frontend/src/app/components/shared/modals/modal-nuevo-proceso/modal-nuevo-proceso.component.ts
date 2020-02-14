@@ -22,6 +22,7 @@ export class ModalNuevoProcesoComponent implements OnInit {
     identification: string;
     phone: string;
     dateCreate: Date;
+    dateReceived: Date;
     dateResponse: Date;
     status: Array<{nameStatus: string}>;  
   }
@@ -37,6 +38,7 @@ export class ModalNuevoProcesoComponent implements OnInit {
       identification: '',
       phone:  '',
       dateCreate: new Date(),
+      dateReceived: new Date(),
       dateResponse: new Date(),
       status: []
     }
