@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
         identification: req.body.identification, 
         phone: req.body.phone,        
         dateCreate: req.body.dateCreate,
+        dateReceived: req.body.dateReceived,
         dateResponse: req.body.dateResponse,
         status: req.body.status,
         files: req.body.files        

@@ -8,6 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
+//Angular Material
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+//Routes
 import { app_routing } from './app.routes'
 
 import { AppComponent } from './app.component';
@@ -40,7 +49,13 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     ModalModule.forRoot(),
     FormsModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    MatMenuModule,
+    MatSliderModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

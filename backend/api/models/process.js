@@ -7,6 +7,7 @@ const processSchema = new Schema({
     identification: { type: String, required: false}, 
     phone: { type: Number, required: false},	
     dateCreate: {type: String, required: true},
+    dateReceived: {type: String, required: false},
     dateResponse: {type: String, required: false},
     status: {type: Array, "default": []},
 	files: {type: Array, "default": []}
