@@ -33,7 +33,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./procesos.component.css']
 })
 export class ProcesosComponent implements OnInit {
-  displayedColumns: string[] = ['nameProcess', 'namePetitioner', 'dateReceived', 'dateResponse', 'progress', 'actions'];
+  displayedColumns: string[] = ['nameProcess', 'namePetitioner', 'dateReceived', 'dateResponse', 'progress','status', 'actions'];
   //dataSource = ELEMENT_DATA;
   dataSource: any[] = [];
   processes: any[] = [];

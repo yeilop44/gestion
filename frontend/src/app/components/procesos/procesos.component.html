@@ -6,13 +6,13 @@
   <table class="table" >    
     <tbody class="border">
       <tr *ngFor="let process of processes; let i = index">
-        <td style="font-weight: 600;">{{ process.nameProcess }}</td>
+        <td style="font-weight: 500;">{{ process.nameProcess }}</td>
         <td>{{ process.namePetitioner }}</td>     
         <td>{{ process.dateReceived | date:'mediumDate'}}</td>
         <td>{{ process.dateResponse | date:'mediumDate'}}</td>
         <td width="15%" style="text-align: center;">
           <div *ngIf="process.status.length !== 3" style="margin-top: -10px;">
-              <span class="missingDays">
+              <span class="missingDaysBootstrap">
                 {{ process.missingDays }}/{{ process.totalDays }}
               </span>
               <ngb-progressbar  type="primary" height="6px" [value]="process.missingDays" [max]="process.totalDays" *ngIf="process.missingDays > 2"></ngb-progressbar>
@@ -31,7 +31,7 @@
           </div>          
         </td>
         <td>                
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="button-more_vert">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
@@ -51,28 +51,21 @@
 </div>
 
 
-
-
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
- 
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
   <ng-container matColumnDef="nameProcess">
     <th mat-header-cell *matHeaderCellDef> Proceso </th>
-    <td mat-cell *matCellDef="let element"> {{element.nameProcess}} </td>
+    <td style="font-weight: 500;" mat-cell *matCellDef="let element"> {{element.nameProcess}} </td>
   </ng-container>
-
 
   <ng-container matColumnDef="namePetitioner">
     <th mat-header-cell *matHeaderCellDef> Titular </th>
     <td mat-cell *matCellDef="let element"> {{element.namePetitioner}} </td>
   </ng-container>
 
-
   <ng-container matColumnDef="dateReceived">
     <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
     <td mat-cell *matCellDef="let element"> {{element.dateReceived | date:'mediumDate'}} </td>
   </ng-container>
-
 
   <ng-container matColumnDef="dateResponse">
     <th mat-header-cell *matHeaderCellDef> Fecha Respuesta </th>
@@ -80,29 +73,38 @@
   </ng-container>
 
   <ng-container matColumnDef="progress">
-    <th mat-header-cell *matHeaderCellDef> progress </th>
-    <td mat-cell *matCellDef="let element">       
-      <ngb-progressbar  type="primary" height="6px" [value]="element.missingDays" [max]="element.totalDays" *ngIf="element.missingDays > 2"></ngb-progressbar>
-      <ngb-progressbar  type="danger" height="6px" [value]="element.missingDays" [max]="element.totalDays" *ngIf="element.missingDays <= 2"></ngb-progressbar>                                 
+    <th mat-header-cell *matHeaderCellDef> Días faltantes </th>
+    <td  width="13%" mat-cell *matCellDef="let element">
+      <span class="missingDaysAngMat">
+        {{ element.missingDays }}/{{ element.totalDays }}
+      </span>       
+      <ngb-progressbar  type="primary" height="5px" [value]="element.missingDays" [max]="element.totalDays" *ngIf="element.missingDays > 2"></ngb-progressbar>
+      <ngb-progressbar  type="danger" height="5px" [value]="element.missingDays" [max]="element.totalDays" *ngIf="element.missingDays <= 2"></ngb-progressbar>                                 
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th style="padding-left: 35px;" mat-header-cell *matHeaderCellDef> Estado </th>
+    <td style="padding-left: 35px;" mat-cell *matCellDef="let element">       
+      <span  class="badge badge-pill" 
+        style=" height: 22px; font-weight: 500;"
+        *ngFor="let state of element.status | slice: element.status.length-1" [ngClass]="{'green': state.nameStatus == 'finalizado', 
+        'red': state.nameStatus == 'iniciado',   'yellow': state.nameStatus == 'en proceso'}">
+        <i class="fas fa-circle fa-xs" style="font-size: 6px; padding-left: 50px; padding: 4px 0px 0px 3px; float: left;"></i>
+        <span style="padding-left: 6px; padding-right: 7px;">{{ state.nameStatus }} </span>
+      </span>                                  
     </td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td mat-cell *matCellDef="let element" class="wrapper">
+      <button mat-icon-button class="button-more_vert" >
+        <mat-icon>edit</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>Editar</span>
-        </button>         
-        <button mat-menu-item>
-          <mat-icon>delete</mat-icon>
-          <span>Eliminar</span>
-        </button>
-      </mat-menu>    
+      <button mat-icon-button class="button-more_vert" >
+        <mat-icon>delete</mat-icon>
+      </button>      
     </td>
   </ng-container>
 
