@@ -37,7 +37,7 @@ tbody.border tr:hover  {
     font-size: 11px; 
     color: rgb(167, 167, 167); 
     position: relative; 
-    left: 90px; 
+    left: 50px; 
     font-weight: 500;
 }
 
@@ -53,7 +53,7 @@ tbody.border tr:hover  {
 }
 
 table {
-    width: 90%;
+    width: 95%;
 }
 
 .button-more_vert {
@@ -67,4 +67,5 @@ tr:hover  .button-more_vert {
 
 
 
+ 
 
