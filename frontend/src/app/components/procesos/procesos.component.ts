@@ -4,15 +4,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ModalNuevoProcesoComponent } from '../shared/modals/modal-nuevo-proceso/modal-nuevo-proceso.component';
 import * as moment from 'moment';
 
-import * as moment1  from 'moment-business-days';
+import * as momentBusinessDays  from 'moment-business-days';
 
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
 @Component({
   selector: 'app-procesos',
@@ -20,8 +13,7 @@ export interface PeriodicElement {
   styleUrls: ['./procesos.component.css']
 })
 export class ProcesosComponent implements OnInit {
-  displayedColumns: string[] = ['nameProcess', 'namePetitioner', 'dateReceived', 'dateResponse', 'progress','status', 'actions'];
-  //dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['nameProcess', 'namePetitioner', 'dateReceived', 'dateResponse', 'progress','status', 'actions'];  
   dataSource: any[] = [];
   processes: any[] = [];
   isLoading: boolean = false;
@@ -60,15 +52,18 @@ export class ProcesosComponent implements OnInit {
       let a = moment(this.processes[i].dateReceived);
       let b =  moment(this.processes[i].dateResponse);
       let c = moment(new Date());
-      //let totalDays = b.diff(a, 'days');
-      //let missingDays = b.diff(c, 'days');
-      let totalDays = moment1(b, 'DD-MM-YYYY').businessDiff(moment(a,'DD-MM-YYYY'));
-      let missingDays = moment1(b, 'DD-MM-YYYY').businessDiff(moment((new Date()),'DD-MM-YYYY'));
+      let totalDays1 = b.diff(a, 'days');
+      let missingDays1 = b.diff(c, 'days');
+      
+
+      let totalDays = momentBusinessDays(b, 'DD-MM-YYYY').businessDiff(moment(a,'DD-MM-YYYY'));
+      let missingDays = momentBusinessDays(b, 'DD-MM-YYYY').businessDiff(moment(c,'DD-MM-YYYY'), true);
       this.processes[i].totalDays = totalDays;
-      this.processes[i].missingDays = missingDays;      
+      this.processes[i].missingDays = missingDays;   
+      console.log(i + ' Dias Faltantes diff '  + missingDays1 + '   => Dias Faltantes businessDiff ' + missingDays);  
+      console.log(i + ' Dias total diff '  +  totalDays1 + '   => Dias total businessDiff ' +  totalDays);    
     }
-    
-    //console.log(this.processes);      
+           
   }   
 
 

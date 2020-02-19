@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Process = require('../models/process')
 
+//Get all process
 router.get('/', async (req, res) => {
     const process = await Process.find();
     res.status(200).json({
@@ -9,6 +10,7 @@ router.get('/', async (req, res) => {
     });
 });
 
+//Create process
 router.post('/', async (req, res) => {
     
     const process = new Process ({
@@ -29,6 +31,30 @@ router.post('/', async (req, res) => {
         items: process
     });
 });
+
+//Update process
+router.put('/:processId', async (req, res) => {
+   
+    const { processId } = req.params;
+    const process = {
+        nameProcess: req.body.nameProcess,
+        namePetitioner: req.body. namePetitioner,
+        identification: req.body.identification,
+        phone: req.body.phone,
+        dateReceived: req.body.dateReceived,
+        dateResponse: req.body.dateResponse,       
+        status: req.body.status,
+        files: req.body.files
+    
+    }
+
+    await Process.findByIdAndUpdate(processId, {$set: process}, {new: true, useFindAndModify: false});
+    res.status(200).json({
+        message: 'Updated process',
+        process: process
+    });
+     
+ });
 
 
 
