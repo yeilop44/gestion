@@ -26,4 +26,17 @@ export class ProcessService {
     return this.http.post(this.urlApi, proceso, httpOptions);
   }
 
+  editProcess(proceso: Proceso) {
+    const httpOptions = {
+          headers: new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'})};
+    return this.http.put(this.urlApi + `/${proceso._id}`, proceso, httpOptions);
+  }
+
+  deleteProcess(_id: string) {
+    const httpOptions = {
+          headers: new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'})};
+    return this.http.delete(this.urlApi + `/${_id}`,  httpOptions);
+  }
+
+
 }

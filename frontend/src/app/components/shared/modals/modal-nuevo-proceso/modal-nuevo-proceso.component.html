@@ -9,7 +9,8 @@
    
     <form>
       <div class="form-row">
-        <div class="form-group col-md-5">          
+        <div class="form-group col-md-5"> 
+          <input type="hidden" class="form-control" placeholder="_id"  name="_id" [(ngModel)]="proceso._id">         
           <input type="text" class="form-control" placeholder="Nombre proceso"  name="nameProcess" [(ngModel)]="proceso.nameProcess">
         </div>
         <div class="form-group col-md-5">          
@@ -33,7 +34,7 @@
         <div class="form-group col-md-5">                                                 
           <div class="form-group">
             <div class="input-group">
-              <input class="form-control" placeholder="dd/mm/aaaa" name="d3" #c3="ngModel" [(ngModel)]="proceso.dateReceived" ngbDatepicker #d3="ngbDatepicker">
+              <input class="form-control"  name="d3" #c3="ngModel" [(ngModel)]="proceso.dateReceived" ngbDatepicker #d3="ngbDatepicker">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button">
                   <i class="far fa-calendar-alt"></i>
@@ -57,10 +58,11 @@
       </div>
       <label for="exampleInputEmail1">Estados</label>
       <div class="form-row" *ngFor="let item of status; let i = index">                                   
-        <input type="hidden" class="form-control"   name="dateCreate" [(ngModel)]="item.dateCreate">               
+        <input type="hidden" class="form-control"   name="dateStatus{{i}}" [(ngModel)]="item.dateStatus">               
         <div class="form-group col-md-10 ">
-          <select class="form-control" name="nameStatus" [(ngModel)]="item.nameStatus">
-            <option selected>iniciado</option>        
+          <select class="form-control" name="nameStatus{{i}}" [(ngModel)]="item.nameStatus">
+            <option selected >{{ item.nameStatus}}</option>
+            <option >iniciado</option>          
             <option>en proceso</option>
             <option>finalizado</option>
           </select>                       

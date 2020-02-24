@@ -1,13 +1,20 @@
 
 export class Proceso {
  
-    constructor (_id = '', nameProcess= '', namePetitioner='', identification='', phone='', dateCreate='') {
+    constructor (_id = '', nameProcess= '', namePetitioner='', identification='', phone='', dateCreate= new Date(),
+      dateReceived= new Date(), dateResponse= new Date(), status=[], files=[]) {
+
       this._id = _id;
       this.nameProcess = nameProcess;
       this.namePetitioner = namePetitioner;
       this.identification= identification;
       this.phone = phone;      
-      this.dateCreate = dateCreate;    
+      this.dateCreate = dateCreate;
+      this.dateReceived = dateReceived;
+      this.dateResponse = dateResponse;
+      this.status = status;
+      this.files = files;
+
   }
   
     _id: string;
@@ -15,7 +22,12 @@ export class Proceso {
     namePetitioner: string;
     identification: string;
     phone: string;
-    dateCreate: string;
+    dateCreate: Date;
+    dateReceived: Date;
+    dateResponse: Date;
+    status: Array<[]>;  
+    files: Array<[]>;  
+
   
   }
   

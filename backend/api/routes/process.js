@@ -44,8 +44,7 @@ router.put('/:processId', async (req, res) => {
         dateReceived: req.body.dateReceived,
         dateResponse: req.body.dateResponse,       
         status: req.body.status,
-        files: req.body.files
-    
+        files: req.body.files    
     }
 
     await Process.findByIdAndUpdate(processId, {$set: process}, {new: true, useFindAndModify: false});
@@ -54,6 +53,17 @@ router.put('/:processId', async (req, res) => {
         process: process
     });
      
+ });
+
+//Delete process
+ router.delete('/:processId', async (req, res) => { 
+
+    await Process.findByIdAndDelete(req.params.processId);
+    res.status(200).json({
+        message: 'Deleted process'
+    });
+
+
  });
 
 

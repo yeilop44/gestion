@@ -78,3 +78,8 @@ ul.nav-general a:active  {
   }
 
 
+@media (max-width: 710px) {
+    #sidenav {
+        display: none;
+    }
+}

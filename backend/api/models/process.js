@@ -6,9 +6,9 @@ const processSchema = new Schema({
     namePetitioner: { type: String, required: false},    
     identification: { type: String, required: false}, 
     phone: { type: Number, required: false},	
-    dateCreate: {type: String, required: true},
-    dateReceived: {type: String, required: false},
-    dateResponse: {type: String, required: false},
+    dateCreate: {type: Date, required: true},
+    dateReceived: {type: Date, required: false},
+    dateResponse: {type: Date, required: false},
     status: {type: Array, "default": []},
 	files: {type: Array, "default": []}
 	
